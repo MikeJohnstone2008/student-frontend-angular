@@ -15,6 +15,12 @@ import { DataService } from './data.service';
 import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { StatusMessageComponent } from './status-message/status-message.component';
+import { MajorComponent } from './major/major.component';
+import { MajorFormComponent } from './major-form/major-form.component';
+import { GradeComponent } from './grade/grade.component';
+import { GradeFormComponent } from './grade-form/grade-form.component';
+import { AssignmentComponent } from './assignment/assignment.component';
+import { AssignmentFormComponent } from './assignment-form/assignment-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { StatusMessageComponent } from './status-message/status-message.componen
     HomeComponent,
     DeleteConfirmComponent,
     StudentFormComponent,
-    StatusMessageComponent
+    StatusMessageComponent,
+    MajorComponent,
+    MajorFormComponent,
+    GradeComponent,
+    GradeFormComponent,
+    AssignmentComponent,
+    AssignmentFormComponent
   ],
   imports: [
     BrowserModule,
