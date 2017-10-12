@@ -21,7 +21,8 @@ export class StudentClassComponent implements OnInit {
   ngOnInit() { this.getStudentClasses(); }
  
   getStudentClasses() {
-    this.dataService.getRecords("student-classes")
+    // this.dataService.getRecords("student-classes")
+    this.dataService.getRecords("student_class")
       .subscribe(
         studentClasses => this.studentClasses = studentClasses,
         error =>  this.errorMessage = <any>error);
@@ -33,7 +34,7 @@ export class StudentClassComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.dataService.deleteRecord("student-class", id)
+        this.dataService.deleteRecord("student_class", id)
           .subscribe(
             studentClass => {this.successMessage = "Record(s) deleted succesfully"; this.getStudentClasses(); },
             error =>  this.errorMessage = <any>error);

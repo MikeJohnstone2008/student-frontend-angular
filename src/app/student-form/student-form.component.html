@@ -13,13 +13,7 @@
 <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
 
 <form novalidate (ngSubmit)="saveStudent(studentForm)"  #studentForm="ngForm" class="form-horizontal">
-
-<!-- <form novalidate (ngSubmit)="saveStudent(studentForm)"  #studentForm="ngForm" class="form-horizontal"> -->
-
   <input [ngModel]="student?.student_id" ngModel #student_id="ngModel" type="hidden" name="student_id">
-
-  <!-- <input [ngModel]="student?.student_id" ngModel #student_id="ngModel" type="hidden" name="student_id"> -->
-
   <div class="form-group">
     <label for="first_name" class="col-sm-2 control-label">First Name</label>
     <div class="col-sm-10">
@@ -50,7 +44,7 @@
   <div class="form-group">
     <label for="gpa" class="col-sm-2 control-label">GPA</label>
     <div class="col-sm-10">
-      <input [ngModel]="student?.gpa" ngModel #gpa="ngModel" type="text" class="form-control" id="gpa" name="gpa" placeholder="4.0" pattern="\d+\.\d+">
+      <input [ngModel]="student?.gpa" ngModel #gpa="ngModel" type="text" class="form-control" id="gpa" name="gpa" placeholder="4.0" required pattern="\d+\.\d+">
       <span *ngIf="formErrors.gpa" class="text-danger">
           {{ formErrors.gpa }}
         </span>
@@ -90,7 +84,7 @@
 
    <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button [disabled]="!studentForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>

@@ -1,12 +1,12 @@
 <ol class="breadcrumb">
   <li><a routerLink="/home">Home</a></li>
-  <li><a routerLink="/student-class">studentClasses</a></li>
-  <li class="active">Manage Student-Classes</li>
+  <li><a routerLink="/class">classes</a></li>
+  <li class="active">Manage Class</li>
 </ol>
 
 <br/>
 
-<a class="btn btn-primary" routerLink="/student-class">Return to Student-Classes</a>
+<a class="btn btn-primary" routerLink="/class">Return to Classes</a>
 
 <h1>Manage Classes</h1>
 
@@ -15,26 +15,35 @@
 <form novalidate (ngSubmit)="saveClass(classForm)"  #classForm="ngForm" class="form-horizontal">
 <input [ngModel]="classObj?.class_id" ngModel #class_id="ngModel" type="hidden" name="class_id">
 <div class="form-group">
-  <label for="sat" class="col-sm-2 control-label">Instructor ID</label>
+  <label for="instructor_id" class="col-sm-2 control-label">Instructor ID</label>
   <div class="col-sm-10">
-    <input [ngModel]="classObj?.instructior_id" ngModel #sat="ngModel" type="text" class="form-control" id="instructor_id" name="instructor_id"  placeholder="Instructor ID" required>
+    <input [ngModel]="classObj?.instructor_id" ngModel #sat="ngModel" type="text" class="form-control" id="instructor_id" name="instructor_id"  placeholder="Instructor ID" required>
+    <span *ngIf="formErrors.instructor_id" class="text-danger">
+        {{ formErrors.instructor_id }}
+    </span>
   </div>
 </div>
 <div class="form-group">
   <label for="subject" class="col-sm-2 control-label">Subject</label>
   <div class="col-sm-10">
-    <input [ngModel]="classObj?.subject" ngModel #instructor="ngModel" type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+    <input [ngModel]="classObj?.subject" ngModel #subject="ngModel" type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required maxlength="30">
+    <span *ngIf="formErrors.subject" class="text-danger">
+        {{ formErrors.subject }}
+      </span>
   </div>
 </div>
 <div class="form-group">
   <label for="course" class="col-sm-2 control-label">Course</label>
   <div class="col-sm-10">
-    <input [ngModel]="classObj?.course" ngModel #instructor="ngModel" type="text" class="form-control" id="course" name="course" placeholder="Class" required>
+    <input [ngModel]="classObj?.course" ngModel #course="ngModel" type="text" class="form-control" id="course" name="course" placeholder="Class" required maxlength="4">
+    <span *ngIf="formErrors.course" class="text-danger">
+        {{ formErrors.course }}
+      </span>
   </div>
 </div>
  <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button [disabled]="!classForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
   </div>
 </div>
 </form>

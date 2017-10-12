@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit }      from '@angular/core';
+import { Component, OnInit, ViewChild }      from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 import { NgForm } from '@angular/forms';
@@ -13,6 +13,10 @@ import { DataService } from '../data.service'
 })
 export class StudentClassFormComponent implements OnInit {
 
+  // Adding:
+  studentClassForm: NgForm;
+  @ViewChild('studentClassForm') currentForm: NgForm;
+
   successMessage: string;
   errorMessage: string;
 
@@ -20,7 +24,7 @@ export class StudentClassFormComponent implements OnInit {
 
   getRecordForEdit(){
     this.route.params
-      .switchMap((params: Params) => this.dataService.getRecord("student-class", +params['id']))
+      .switchMap((params: Params) => this.dataService.getRecord("student_class", +params['id']))
       .subscribe(studentClassData => this.student_classObj = studentClassData);
   }
 
@@ -39,13 +43,13 @@ export class StudentClassFormComponent implements OnInit {
   }
 
   saveStudentClass(studentClassForm: NgForm){
-    if(typeof studentClassForm.value.instructor_id === "number"){
-      this.dataService.editRecord("student-class", studentClassForm.value, studentClassForm.value.instructor_id)
+    if(typeof studentClassForm.value.student_class_id === "number"){
+      this.dataService.editRecord("student_class", studentClassForm.value, studentClassForm.value.student_class_id)
           .subscribe(
             instructor => this.successMessage = "Record updated succesfully",
             error =>  this.errorMessage = <any>error);
     }else{
-      this.dataService.addRecord("student-class", studentClassForm.value)
+      this.dataService.addRecord("student_class", studentClassForm.value)
           .subscribe(
             instructor => this.successMessage = "Record added succesfully",
             error =>  this.errorMessage = <any>error);

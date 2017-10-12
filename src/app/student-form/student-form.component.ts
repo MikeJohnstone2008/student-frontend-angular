@@ -91,6 +91,7 @@ export class StudentFormComponent implements OnInit {
     'sat': '',
     'start_date': '',
     'gpa': ''
+
   };
 
   validationMessages = {
@@ -113,6 +114,7 @@ export class StudentFormComponent implements OnInit {
     },
     'gpa': {
       'pattern': 'GPA must be a decimal'
-    }
+    },
+    
   };
 }

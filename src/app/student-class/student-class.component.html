@@ -21,14 +21,15 @@
   </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let student-class of student-classes">
-    <td>{{student-class.student_class_id}}</td>
-    <td>{{student-class.student_id}}</td>
-    <td>{{student-class.class_id}}</td>
+  <tr *ngFor="let studentclass of studentClasses">
+    <td>{{studentclass.student_class_id}}</td>
+    <td>{{studentclass.student_id}}</td>
+    <td>{{studentclass.class_id}}</td>
     <td class="text-center">
-      <a class="btn btn-primary" [routerLink]="['/student-class/edit/', student-class.student_class_id]">Edit</a>&nbsp;
-      <button (click)="deleteInstructor(student-class.student_class_id)" class="btn btn-danger">Delete</button>
+      <a class="btn btn-primary" [routerLink]="['/student-class/edit/', studentclass.student_class_id]">Edit</a>&nbsp;
+      <button (click)="deleteStudentClass(studentclass.student_class_id)" class="btn btn-danger">Delete</button>
     </td>
   </tr>
 </tbody>
 </table>
+
